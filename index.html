@@ -1,9 +1,19 @@
-<html>
+<!DOCTYPE html>
     <head>
+        <link rel="stylesheet" type="text/css" href="site.css"/>
     </head>
     <body ng-app="jsCodingTest">
+        <div class="header">
+            <img src="content/citypantry_logo.svg" alt="City Pantry"/>
+        </div>
         <main ng-controller="GiveTheGovernmentABurrito">
-            Write your HTML here.
+            <input type="text" ng-model="searchText"/>  
+            <div id="list" class="list">         
+            <ul>
+                <li ng-repeat="package in foodPackages | filter:{name: searchText}">{{package.name}}</li>
+            </ul>
+            </div>
+            <p class="errored" ng-show="errored">Oops! Something went wrong please try again later</p>
         </main>
 
         <script src="lib/angular.min.js"></script>
